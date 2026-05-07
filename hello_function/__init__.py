@@ -16,7 +16,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             # Body is absent or not valid JSON — that's fine, name stays None.
             pass
 
-    greeting = f"Hello, {name}!" if name else "Hello from Azure Functions!"
+    greeting = f"Hello, {name}!" if name else "Hello from Azure Functions I made a change that will when i push to main!"
 
     return func.HttpResponse(
         greeting,
