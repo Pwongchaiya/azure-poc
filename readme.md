@@ -16,15 +16,17 @@ This project demonstrates an end-to-end CI/CD pipeline that automatically deploy
 
 ## Project Structure
 
+```
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml       # GitHub Actions deployment workflow
 ├── hello_function/
-│   ├── init.py          # HTTP trigger function
+│   ├── init.py              # HTTP trigger function
 │   └── function.json        # Binding configuration
 ├── host.json                # Azure Functions host configuration
 ├── requirements.txt         # Python dependencies
 └── setup-azure.sh           # Azure resource provisioning script
+```
 
 ## Getting Started
 
@@ -32,7 +34,7 @@ This project demonstrates an end-to-end CI/CD pipeline that automatically deploy
 
 ```bash
 az login
-chmod +x setup-azure.sh
+bash +x setup-azure.sh
 ./setup-azure.sh
 ```
 
@@ -40,13 +42,13 @@ chmod +x setup-azure.sh
 
 After running the script, add the following secrets to your repository under **Settings → Secrets and variables → Actions**:
 
-| Secret | Description |
-|---|---|
-| `AZURE_CLIENT_ID` | Managed identity client ID |
-| `AZURE_TENANT_ID` | Azure AD tenant ID |
-| `AZURE_SUBSCRIPTION_ID` | Azure subscription ID |
-| `AZURE_FUNCTION_APP_NAME` | Function App name |
-| `AZURE_RESOURCE_GROUP` | Resource group name |
+| Secret                    | Description                |
+| ------------------------- | -------------------------- |
+| `AZURE_CLIENT_ID`         | Managed identity client ID |
+| `AZURE_TENANT_ID`         | Azure AD tenant ID         |
+| `AZURE_SUBSCRIPTION_ID`   | Azure subscription ID      |
+| `AZURE_FUNCTION_APP_NAME` | Function App name          |
+| `AZURE_RESOURCE_GROUP`    | Resource group name        |
 
 ### 3. Deploy
 
