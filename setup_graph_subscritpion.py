@@ -28,18 +28,24 @@ import sys
 import json
 import requests
 from datetime import datetime, timezone, timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ── Configuration — fill these in before running ──────────────────────────────
 TENANT_ID = os.environ.get("GRAPH_TENANT_ID", "<your-tenant-id>")
 CLIENT_ID = os.environ.get("GRAPH_CLIENT_ID", "<your-client-id>")
 CLIENT_SECRET = os.environ.get("GRAPH_CLIENT_SECRET", "<your-client-secret>")
+AZURE_FUNCTION_APP_NAME = os.environ.get("AZURE_FUNCTION_APP_NAME", "<your-function-app-name>")
 
 # The full URL of your deployed graph_webhook function.
 # Replace with your actual Function App name.
 NOTIFICATION_URL = os.environ.get(
     "GRAPH_NOTIFICATION_URL",
-    "https://<your-function-app>.azurewebsites.net/api/graph_webhook"
+    f"https://{AZURE_FUNCTION_APP_NAME}.azurewebsites.net/api/graph_webhook"
 )
+
+print(TENANT_ID, CLIENT_ID, CLIENT_SECRET, NOTIFICATION_URL)
 
 
 def get_token() -> str:

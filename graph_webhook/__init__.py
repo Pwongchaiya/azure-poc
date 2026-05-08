@@ -3,7 +3,9 @@ import os
 import json
 import requests
 import azure.functions as func
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def get_graph_token() -> str:
     """
