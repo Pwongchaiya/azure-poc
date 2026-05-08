@@ -32,10 +32,10 @@ jobs:
       # .python_packages/lib/site-packages relative to the project root.
       # The ENABLE_ORYX_BUILD app setting (set by default) can handle this
       # server-side too, but installing locally is more explicit and reliable.
-    #   - name: Install dependencies
-    #     run: |
-    #       python -m pip install --upgrade pip
-    #       pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt --target=".python_packages/lib/site-packages"
 
       # ── 4. Authenticate to Azure via OIDC ────────────────────────────────────
       # Uses the federated credential created by setup-azure.sh. No client
@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: ${{ secrets.AZURE_FUNCTION_APP_NAME }}
           package: "."
-          scm-do-build-during-deployment: true
-          enable-oryx-build: true
+          scm-do-build-during-deployment: false
+          enable-oryx-build: false
